@@ -43,10 +43,12 @@ const Livro =  function(nome, editora, paginas) {
 }
 
 ### Depois o Livro era instanciado:
-const mentesPerigosas = new Livro("Mentes Perigosas","Principium","288"); 
-console.log(mentesPerigosas.getNome());
-console.log(mentesPerigosas.getEditora());
-console.log(mentesPerigosas.getPaginas());
+{
+    const mentesPerigosas = new Livro("Mentes Perigosas","Principium","288"); 
+    console.log(mentesPerigosas.getNome());
+    console.log(mentesPerigosas.getEditora());
+    console.log(mentesPerigosas.getPaginas());
+}
 
 ### Quase tudo em JS é um objeto, o qual tem uma propriedade escondida, o prototype:
 const nome = "Alura";
@@ -54,27 +56,32 @@ const nome = "Alura";
 ### Por baixo dos "panos" o JS faz isso:
 Ex1:
 
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/104650333/230234041-e7cc41f1-03bd-49a2-9534-59583a8425e1.gif)
+
+
 # Prototype
 
 Durante nossos estudos de JavaScript é normal toparmos com os protótipos de duas formas diferentes, através da propriedade __proto__ ou do objeto prototype que vemos em todos os objetos. Afinal, qual a diferença e quando se usa cada um deles?
 
 Para entender melhor essa diferença, vamos testar alguns códigos:
+{
+    let user = {
+        perfil: 'estudante'
+    }
 
-let user = {
-    perfil: 'estudante'
+    let estudante = {
+        nome: 'juliana'
+    }
 }
-
-let estudante = {
-    nome: 'juliana'
+{
+    Object.setPrototypeOf(estudante, user)
 }
-
-Object.setPrototypeOf(estudante, user)
 
 No trecho acima, definimos dois objetos, com propriedades diferentes, e estabelecemos que o objeto user será usado como protótipo para o objeto estudante. Podemos testar esse código direto no terminal:
-
-console.log(estudante.nome) // 'juliana'
-console.log(estudante.perfil) //'estudante'
-
+{
+    console.log(estudante.nome) // 'juliana'
+    console.log(estudante.perfil) //'estudante'
+}
 É possível acessar __proto__ de estudante, porém, para isso, devemos copiar o código acima e executá-lo no console do navegador, pois o módulo console do NodeJS funciona de uma forma um pouco diferente e não vai acessar essa propriedade.
 
 
@@ -91,15 +98,15 @@ function User() {}
 User.prototype.perfil = 'estudante'
 let estudante = new User()
 
-Testando no próprio terminal:
-
-console.log(estudante.perfil) //'estudante'
-
+### Testando no próprio terminal:
+{
+    console.log(estudante.perfil) //'estudante'
+}
 No caso acima, a palavra-chave new vai criar um novo objeto simples e definir, na propriedade prototype desse objeto recém criado, as propriedades de protótipo que encontrar em User. O prototype é criado automaticamente e existe como propriedade apenas em funções, para quando queremos usar determinada função como construtor usando new.
 
 Vamos fazer um último teste, copiando a função User() criada acima e executando no console do navegador:
 
-Em resumo:
+### Em resumo:
 
 __proto__ é uma propriedade que todos os objetos têm e que aponta para o protótipo que foi definido para aquele objeto.
 
@@ -113,21 +120,21 @@ Faça mais testes criando objetos a partir de funções construtoras e confira o
 
 Vimos vários aspectos da herança de protótipos durante a aula, vamos resumir alguns deles aqui e colocar alguns pontos extras:
 
-Protótipo vs prototype
+## Protótipo vs prototype
 Praticamente todos os dados criados em JavaScript (objetos, arrays, etc) têm um protótipo, porém apenas alguns deles têm a propriedade prototype. São estes objetos que contêm a propriedade prototype que acessamos com Object.prototype, Array.prototype e etc durante o vídeo, que definem os protótipos para todos os outros acima na cadeia.
 
 Ou seja, todos os objetos criados a partir de Object, Array, String, etc, têm um protótipo que foi “herdado” destes, mas não necessariamente têm uma propriedade prototype.
 
-Cópia vs referência
+## Cópia vs referência
 Os métodos e propriedades não são copiados de um objeto para outro na cadeia de protótipos - eles são acessados pelo interpretador ao percorrer a cadeia e os métodos executados de acordo com o this, ou seja, o contexto em que o método foi executado.
 
-__proto__ será descontinuado
+## __proto__ será descontinuado
 O uso de __proto__ durante a aula é só para dar exemplo e acessar a cadeia de protótipos. Esta é uma propriedade “assessor” que serve para “expor” o protótipo dos objetos e está em processo de ser descontinuada. Você pode ler mais sobre esta propriedade na documentação do MDN.
 
-Não altere o prototype
+## Não altere o prototype
 Não é recomendável alterar diretamente o prototype, pois alterar diretamente as regras de herança de qualquer objeto afeta a performance do código em qualquer interpretador, seja o NodeJS ou navegadores. Vamos ver como criar objetos de acordo com as boas práticas do JavaScript em seguida.
 
-Cuidado com a performance
+## Cuidado com a performance
 Todas as propriedades de uma cadeia de protótipos são enumeradas e o tempo que o interpretador leva para pesquisar uma propriedade, desde o nível mais alto na cadeia, pode ser longo e impactar o desempenho. Além disso, se o código tentar acessar uma propriedade não existente, vai percorrer toda a cadeia durante a busca. Assim, não é uma boa prática criar longas cadeias de protótipos.
 
 ### Após o E6 começaram o uso das classes, usando o mesmo exemplo:
@@ -147,6 +154,9 @@ class Livro {
         console.log(`${this.nome} é um livro da editora ${this.editora} e tem ${this.paginas} páginas`)
     }
 }
+
+![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/104650333/230236112-630c9741-022c-4460-91b6-cebf91c1285d.gif)
+
 
 ### Para criar um livro:
 
@@ -196,13 +206,12 @@ Iserir:
 "type": "module"
 Ex: 
 
+![ezgif com-video-to-gif (2)](https://user-images.githubusercontent.com/104650333/230236271-f6824378-581f-4bd7-ae0f-dad03f1d8a25.gif)
+
+
 ### Depois só importar dentro do arquivo:
 
-
-
-
-
-
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/104650333/230234925-19137a94-db6d-4e43-b379-6851c4a8532a.gif)
 
 Quando trabalhamos com NodeJS, é comum usarmos arquivos diferentes para separar e organizar o código. Cada arquivo .js é um módulo independente e suas funções, variáveis e classes não são compartilhados com o restante do código, a não ser quando são explicitamente exportados e importados em outros módulos.
 
