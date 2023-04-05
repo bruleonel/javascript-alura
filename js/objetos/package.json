@@ -1,0 +1,13 @@
+{
+  "name": "objetos",
+  "version": "1.0.0",
+  "description": "const Livro = {\r     nome: \"Mentes Perigosas\",\r     editora: \"Principium\",\r     páginas: \"288\"\r     descrever: function() {\r         console.log(\"Eles podem ter várias faces. Disfarçados de pessoas de bem, autora de mentes ansiosas ocultam o que realmente são: seres calculistas, manipuladores e insensíveis aos sentimentos alheios. Estão ao nosso lado no trabalho, na escola, na vizinhança e no círculo familiar e, a qualquer momento, podem gerar destruição em nossa vida. Eles são os psicopatas, uma ameaça real e silenciosa para toda a sociedade.\");\r     }\r }",
+  "type": "module",
+  "main": "classes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
